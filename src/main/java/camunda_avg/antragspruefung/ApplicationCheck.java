@@ -1,14 +1,11 @@
 package camunda_avg.antragspruefung;
 
 import java.util.logging.Logger;
-import java.awt.Desktop;
-import java.net.URI;
 
 import org.camunda.bpm.client.ExternalTaskClient;
 
 public class ApplicationCheck {
-  // private final static Logger LOGGER =
-  // Logger.getLogger(ApplicationCheck.class.getName());
+  private final static Logger LOGGER = Logger.getLogger(ApplicationCheck.class.getName());
 
   public static void main(String[] args) {
 
@@ -25,6 +22,23 @@ public class ApplicationCheck {
         .handler((externalTask, externalTaskService) -> {
 
           System.out.println("Es geht");
+
+          String prename = externalTask.getVariable("prename");
+          String surname = externalTask.getVariable("surname");
+          String email = externalTask.getVariable("email");
+          Integer salary = externalTask.getVariable("salary");
+          String role = externalTask.getVariable("role");
+          Integer staffNumber = externalTask.getVariable("staff_number");
+          String department = externalTask.getVariable("department");
+
+          LOGGER.info("Vorname des Kandidaten: " + prename);
+          LOGGER.info("Nachname des Kandidaten: " + surname);
+          LOGGER.info("E-Mail des Kandidaten: " + email);
+          LOGGER.info("Gehalt der Ausgeschriebenen Stelle: " + salary);
+          LOGGER.info("Rolle des Kandidaten: " + role);
+          LOGGER.info("Personalnummer des Antragsstellers: " + staffNumber);
+          LOGGER.info("Abteilung des Antragsstellers: " + department);
+
           // Complete the task
           externalTaskService.complete(externalTask);
         })
