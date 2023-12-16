@@ -4,7 +4,7 @@ public class Employee {
   public int id;
   public String prename;
   public String surname;
-  public String department;
+  public String departement;
   public String role;
   public int salary;
 
